@@ -364,46 +364,122 @@ ALTER TABLE public.faq_items ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.audit_logs ENABLE ROW LEVEL SECURITY;
 
 -- Public can SELECT published data
+DROP POLICY IF EXISTS "Public can view site settings" ON public.site_settings;
 CREATE POLICY "Public can view site settings" ON public.site_settings FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Public can view enabled sections" ON public.homepage_sections;
 CREATE POLICY "Public can view enabled sections" ON public.homepage_sections FOR SELECT USING (is_enabled = true);
+
+DROP POLICY IF EXISTS "Public can view published pages" ON public.pages;
 CREATE POLICY "Public can view published pages" ON public.pages FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view active navigation" ON public.navigation_items;
 CREATE POLICY "Public can view active navigation" ON public.navigation_items FOR SELECT USING (is_active = true);
+
+DROP POLICY IF EXISTS "Public can view published announcements" ON public.announcements;
 CREATE POLICY "Public can view published announcements" ON public.announcements FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can insert admission enquiries" ON public.admission_enquiries;
 CREATE POLICY "Public can insert admission enquiries" ON public.admission_enquiries FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Public can view published calendars" ON public.academic_calendars;
 CREATE POLICY "Public can view published calendars" ON public.academic_calendars FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published exam updates" ON public.examination_updates;
 CREATE POLICY "Public can view published exam updates" ON public.examination_updates FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view active faculty" ON public.faculty;
 CREATE POLICY "Public can view active faculty" ON public.faculty FOR SELECT USING (is_active = true);
+
+DROP POLICY IF EXISTS "Public can view published albums" ON public.gallery_albums;
 CREATE POLICY "Public can view published albums" ON public.gallery_albums FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view images of published albums" ON public.gallery_images;
 CREATE POLICY "Public can view images of published albums" ON public.gallery_images FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Public can view published videos" ON public.gallery_videos;
 CREATE POLICY "Public can view published videos" ON public.gallery_videos FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published events" ON public.events;
 CREATE POLICY "Public can view published events" ON public.events FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published notices" ON public.notices;
 CREATE POLICY "Public can view published notices" ON public.notices FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published achievements" ON public.achievements;
 CREATE POLICY "Public can view published achievements" ON public.achievements FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published testimonials" ON public.testimonials;
 CREATE POLICY "Public can view published testimonials" ON public.testimonials FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published disclosures" ON public.disclosure_documents;
 CREATE POLICY "Public can view published disclosures" ON public.disclosure_documents FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published downloads" ON public.downloads;
 CREATE POLICY "Public can view published downloads" ON public.downloads FOR SELECT USING (is_published = true);
+
+DROP POLICY IF EXISTS "Public can view published FAQs" ON public.faq_items;
 CREATE POLICY "Public can view published FAQs" ON public.faq_items FOR SELECT USING (is_published = true);
 
 -- Service role key / Admin has full access to all operations
+DROP POLICY IF EXISTS "Service role full access settings" ON public.site_settings;
 CREATE POLICY "Service role full access settings" ON public.site_settings FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access sections" ON public.homepage_sections;
 CREATE POLICY "Service role full access sections" ON public.homepage_sections FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access pages" ON public.pages;
 CREATE POLICY "Service role full access pages" ON public.pages FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access navigation" ON public.navigation_items;
 CREATE POLICY "Service role full access navigation" ON public.navigation_items FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access announcements" ON public.announcements;
 CREATE POLICY "Service role full access announcements" ON public.announcements FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access enquiries" ON public.admission_enquiries;
 CREATE POLICY "Service role full access enquiries" ON public.admission_enquiries FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access calendars" ON public.academic_calendars;
 CREATE POLICY "Service role full access calendars" ON public.academic_calendars FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access exam updates" ON public.examination_updates;
 CREATE POLICY "Service role full access exam updates" ON public.examination_updates FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access faculty" ON public.faculty;
 CREATE POLICY "Service role full access faculty" ON public.faculty FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access albums" ON public.gallery_albums;
 CREATE POLICY "Service role full access albums" ON public.gallery_albums FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access images" ON public.gallery_images;
 CREATE POLICY "Service role full access images" ON public.gallery_images FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access videos" ON public.gallery_videos;
 CREATE POLICY "Service role full access videos" ON public.gallery_videos FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access events" ON public.events;
 CREATE POLICY "Service role full access events" ON public.events FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access notices" ON public.notices;
 CREATE POLICY "Service role full access notices" ON public.notices FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access achievements" ON public.achievements;
 CREATE POLICY "Service role full access achievements" ON public.achievements FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access testimonials" ON public.testimonials;
 CREATE POLICY "Service role full access testimonials" ON public.testimonials FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access disclosures" ON public.disclosure_documents;
 CREATE POLICY "Service role full access disclosures" ON public.disclosure_documents FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access downloads" ON public.downloads;
 CREATE POLICY "Service role full access downloads" ON public.downloads FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access FAQs" ON public.faq_items;
 CREATE POLICY "Service role full access FAQs" ON public.faq_items FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Service role full access audit logs" ON public.audit_logs;
 CREATE POLICY "Service role full access audit logs" ON public.audit_logs FOR ALL USING (true);
 
 -- SAFE UPGRADES FOR EXISTING DATABASES
